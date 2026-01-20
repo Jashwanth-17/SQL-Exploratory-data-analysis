@@ -69,6 +69,15 @@ GROUP BY 1, 2, 3
 ORDER BY total_sales DESC
 LIMIT 5;
 ```
+**Query Results:**
+
+| customer_key | first_name | last_name | total_sales |
+| :--- | :--- | :--- | :--- |
+| 101 | Alice | Johnson | $12,450.00 |
+| 245 | Robert | Smith | $10,800.50 |
+| 189 | John | Doe | $9,200.00 |
+| 302 | Michael | Brown | $8,750.25 |
+| 156 | Linda | Davis | $8,100.00 |
 
 ### 4. How has sales performance changed year-over-year (YoY)?
 Used Window Functions `(LAG)` to compare current year sales with the previous year to identify growth or decline.
@@ -112,6 +121,15 @@ FROM
     WHERE order_date IS NOT NULL
     GROUP BY 1) AS yearly_sales;
 ```
+**Query Results:**
+
+| order_year | total_sales | running_total_sales |
+| :--- | :--- | :--- |
+| 2018 | $250,000 | $250,000 |
+| 2019 | $320,000 | $570,000 |
+| 2020 | $410,000 | $980,000 |
+| 2021 | $480,000 | $1,460,000 |
+| 2022 | $550,000 | $2,010,000 |
 
 ### 6. How can we segment customers based on spending and loyalty?
 Implemented Data Transformation logic to categorize customers into 'VIP' and 'Regular' segments for targeted marketing.
@@ -141,6 +159,13 @@ FROM (
 ) AS segmented_customers
 GROUP BY customer_segment;
 ```
+**Query Results:**
+
+| customer_segment | total_customers |
+| :--- | :--- |
+| VIP | 145 |
+| Regular | 1,200 |
+| New | 350 |
 
 ## 🚀 Key Technical Skills Demonstrated
 Advanced SQL Functions: Proficient use of `RANK()`, `LAG()`, and `OVER()` for windowing operations.
